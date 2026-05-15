@@ -1,0 +1,125 @@
+{
+  "name": "sudo-remote-ssh",
+  "displayName": "Sudo Remote - SSH",
+  "description": "Add, edit, save, and delete protected files with sudo/root privileges.",
+  "version": "1.0.0",
+  "publisher": "rezbouchabou",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "icon": "icon.png",
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "remote-ssh",
+    "ssh",
+    "root",
+    "sudo"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rezbouchabou/sudo-remote-ssh"
+  },
+  "bugs": {
+    "url": "https://github.com/rezbouchabou/sudo-remote-ssh/issues"
+  },
+  "homepage": "https://github.com/rezbouchabou/sudo-remote-ssh",
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Sudo Remote - SSH",
+      "properties": {
+        "sudo-remote-ssh.command": {
+          "type": "string",
+          "default": "sudo",
+          "description": "The command to run sudo."
+        },
+        "sudo-remote-ssh.extensionsToNotifyOnSave": {
+          "type": "array",
+          "default": [],
+          "description": "List of extension IDs to notify when saving a file."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "sudo-remote-ssh.saveFile",
+        "title": "Save as Root",
+        "category": "Sudo Remote - SSH"
+      },
+      {
+        "command": "sudo-remote-ssh.saveFileAsSpecifiedUser",
+        "title": "Save as Specified User...",
+        "category": "Sudo Remote - SSH"
+      },
+      {
+        "command": "sudo-remote-ssh.newFile",
+        "title": "New File as Root...",
+        "category": "Sudo Remote - SSH"
+      },
+      {
+        "command": "sudo-remote-ssh.newFileAsSpecifiedUser",
+        "title": "New File as Specified User...",
+        "category": "Sudo Remote - SSH"
+      },
+      {
+        "command": "sudo-remote-ssh.newFolder",
+        "title": "New Folder as Root...",
+        "category": "Sudo Remote - SSH"
+      },
+      {
+        "command": "sudo-remote-ssh.newFolderAsSpecifiedUser",
+        "title": "New Folder as Specified User...",
+        "category": "Sudo Remote - SSH"
+      },
+      {
+        "command": "sudo-remote-ssh.deleteFileOrFolder",
+        "title": "Delete as Root",
+        "category": "Sudo Remote - SSH"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "sudo-remote-ssh.saveFile",
+          "when": "explorerResourceIsFile",
+          "group": "7_modification@1"
+        },
+        {
+          "command": "sudo-remote-ssh.saveFileAsSpecifiedUser",
+          "when": "explorerResourceIsFile",
+          "group": "7_modification@1"
+        },
+        {
+          "command": "sudo-remote-ssh.newFile",
+          "when": "explorerResourceIsFolder",
+          "group": "7_modification@1"
+        },
+        {
+          "command": "sudo-remote-ssh.newFolder",
+          "when": "explorerResourceIsFolder",
+          "group": "7_modification@2"
+        },
+        {
+          "command": "sudo-remote-ssh.newFileAsSpecifiedUser",
+          "when": "explorerResourceIsFolder",
+          "group": "7_modification@2"
+        },
+        {
+          "command": "sudo-remote-ssh.newFolderAsSpecifiedUser",
+          "when": "explorerResourceIsFolder",
+          "group": "7_modification@2"
+        },
+        {
+          "command": "sudo-remote-ssh.deleteFileOrFolder",
+          "group": "7_modification@3"
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0"
+  }
+}
