@@ -1,8 +1,8 @@
 {
   "name": "remote-ssh-sudo",
   "displayName": "Sudo for Remote - SSH",
-  "description": "Add, edit, save, and delete protected files with sudo/root privileges.",
-  "version": "1.0.0",
+  "description": "Add, edit, save, delete, and change permissions/ownership of protected files with sudo/root privileges.",
+  "version": "1.1.0",
   "publisher": "rezbouchabou",
   "engines": {
     "vscode": "^1.80.0"
@@ -15,28 +15,31 @@
     "remote-ssh",
     "ssh",
     "root",
-    "sudo"
+    "sudo",
+    "chmod",
+    "chown",
+    "permissions"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/rezbouchabou/sudo-remote-ssh"
+    "url": "https://github.com/rezbouchabou/remote-ssh-sudo"
   },
   "bugs": {
-    "url": "https://github.com/rezbouchabou/sudo-remote-ssh/issues"
+    "url": "https://github.com/rezbouchabou/remote-ssh-sudo/issues"
   },
-  "homepage": "https://github.com/rezbouchabou/sudo-remote-ssh",
+  "homepage": "https://github.com/rezbouchabou/remote-ssh-sudo",
   "activationEvents": [],
   "main": "./extension.js",
   "contributes": {
     "configuration": {
-      "title": "Sudo Remote - SSH",
+      "title": "Sudo for Remote - SSH",
       "properties": {
-        "sudo-remote-ssh.command": {
+        "remote-ssh-sudo.command": {
           "type": "string",
           "default": "sudo",
           "description": "The command to run sudo."
         },
-        "sudo-remote-ssh.extensionsToNotifyOnSave": {
+        "remote-ssh-sudo.extensionsToNotifyOnSave": {
           "type": "array",
           "default": [],
           "description": "List of extension IDs to notify when saving a file."
@@ -45,66 +48,84 @@
     },
     "commands": [
       {
-        "command": "sudo-remote-ssh.saveFile",
+        "command": "remote-ssh-sudo.saveFile",
         "title": "Save as Root",
-        "category": "Sudo Remote - SSH"
+        "category": "Sudo for Remote - SSH"
       },
       {
-        "command": "sudo-remote-ssh.saveFileAsSpecifiedUser",
+        "command": "remote-ssh-sudo.saveFileAsSpecifiedUser",
         "title": "Save as Specified User...",
-        "category": "Sudo Remote - SSH"
+        "category": "Sudo for Remote - SSH"
       },
       {
-        "command": "sudo-remote-ssh.newFile",
+        "command": "remote-ssh-sudo.newFile",
         "title": "New File as Root...",
-        "category": "Sudo Remote - SSH"
+        "category": "Sudo for Remote - SSH"
       },
       {
-        "command": "sudo-remote-ssh.newFileAsSpecifiedUser",
+        "command": "remote-ssh-sudo.newFileAsSpecifiedUser",
         "title": "New File as Specified User...",
-        "category": "Sudo Remote - SSH"
+        "category": "Sudo for Remote - SSH"
       },
       {
-        "command": "sudo-remote-ssh.newFolder",
+        "command": "remote-ssh-sudo.newFolder",
         "title": "New Folder as Root...",
-        "category": "Sudo Remote - SSH"
+        "category": "Sudo for Remote - SSH"
       },
       {
-        "command": "sudo-remote-ssh.newFolderAsSpecifiedUser",
+        "command": "remote-ssh-sudo.newFolderAsSpecifiedUser",
         "title": "New Folder as Specified User...",
-        "category": "Sudo Remote - SSH"
+        "category": "Sudo for Remote - SSH"
       },
       {
-        "command": "sudo-remote-ssh.deleteFileOrFolder",
+        "command": "remote-ssh-sudo.delete",
         "title": "Delete as Root",
-        "category": "Sudo Remote - SSH"
+        "category": "Sudo for Remote - SSH"
+      },
+      {
+        "command": "remote-ssh-sudo.chmod",
+        "title": "Change Permissions (chmod)...",
+        "category": "Sudo for Remote - SSH"
+      },
+      {
+        "command": "remote-ssh-sudo.chown",
+        "title": "Change Owner/Group (chown)...",
+        "category": "Sudo for Remote - SSH"
       }
     ],
     "menus": {
       "explorer/context": [
         {
-          "command": "sudo-remote-ssh.newFile",
+          "command": "remote-ssh-sudo.newFile",
           "when": "explorerResourceIsFolder",
           "group": "7_modification@1"
         },
         {
-          "command": "sudo-remote-ssh.newFolder",
+          "command": "remote-ssh-sudo.newFolder",
           "when": "explorerResourceIsFolder",
           "group": "7_modification@2"
         },
         {
-          "command": "sudo-remote-ssh.newFileAsSpecifiedUser",
+          "command": "remote-ssh-sudo.newFileAsSpecifiedUser",
           "when": "explorerResourceIsFolder",
           "group": "7_modification@3"
         },
         {
-          "command": "sudo-remote-ssh.newFolderAsSpecifiedUser",
+          "command": "remote-ssh-sudo.newFolderAsSpecifiedUser",
           "when": "explorerResourceIsFolder",
           "group": "7_modification@4"
         },
         {
-          "command": "sudo-remote-ssh.deleteFileOrFolder",
+          "command": "remote-ssh-sudo.delete",
           "group": "7_modification@5"
+        },
+        {
+          "command": "remote-ssh-sudo.chmod",
+          "group": "7_modification@6"
+        },
+        {
+          "command": "remote-ssh-sudo.chown",
+          "group": "7_modification@7"
         }
       ]
     }
